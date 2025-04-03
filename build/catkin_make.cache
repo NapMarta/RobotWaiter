@@ -1,0 +1,2 @@
+robot_bar
+-DCATKIN_DEVEL_PREFIX=/home/marta/Desktop/Progetto/ProgettoRP/devel -DCMAKE_INSTALL_PREFIX=/home/marta/Desktop/Progetto/ProgettoRP/install -G Unix Makefiles
