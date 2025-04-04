@@ -1,0 +1,4 @@
+int32 tavolo  # Input: numero del tavolo
+---
+float32 x     # Output: coordinata X
+float32 y     # Output: coordinata Y

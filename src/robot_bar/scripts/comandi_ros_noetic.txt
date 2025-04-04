@@ -1,0 +1,30 @@
+# 1. Rendere eseguibile lo script Python
+chmod +x ~/Desktop/Progetto/ProgettoRP/src/robot_bar/scripts/order_manager.py
+# -> Assegna i permessi di esecuzione allo script per poterlo eseguire con rosrun
+
+# 2. Configurare il workspace ROS
+source ~/Desktop/Progetto/ProgettoRP/devel/setup.bash
+# -> Inizializza le variabili d'ambiente del workspace ROS
+
+# 3. Compilare il workspace (se necessario)
+cd ~/Desktop/Progetto/ProgettoRP
+catkin_make
+# -> Compila il progetto ROS per generare i file necessari
+
+# 4. Avviare il master ROS (da tenere aperto in un terminale separato)
+roscore
+# -> Avvia il master ROS necessario per la comunicazione tra i nodi
+
+# 5. Eseguire lo script Python come nodo ROS
+rosrun robot_bar order_manager.py
+# -> Avvia il nodo ROS contenuto nello script order_manager.py
+
+# 6. Publica il messaggio da inviare in un nuovo nodo
+rostopic pub /ordine std_msgs/String "data: 'caffè,3'"
+# -> il topic viene definito in rospy.Subscriber('/ordine', String, order_callback)
+Perché nessuno dei due sta pubblicando su /ordine.
+    - Se entrambi sono solo subscriber, ROS non crea alcuna connessione, perché non c'è traffico da gestire.
+    - Serve almeno un publisher e almeno un subscriber attivi contemporaneamente.
+
+# 7. Avvio tramite il file launch
+roslaunch robot_bar robot_bar.launch
