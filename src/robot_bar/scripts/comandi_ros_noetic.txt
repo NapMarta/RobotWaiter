@@ -29,3 +29,8 @@ Perché nessuno dei due sta pubblicando su /ordine.
 # 7. Avvio tramite il file launch
 roslaunch robot_bar robot_bar.launch
 # -> In questo modo si avviano insieme tutti i nodi 
+
+# 8. Analisi delle cominicazioni tra i nodi
+rosservice list
+rqt_graph 
+# -> rqt_graph per monitorare i topic e rosservice list per monitorare i servizi
