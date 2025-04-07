@@ -54,6 +54,8 @@ CMAKE_BINARY_DIR = /home/marta/Desktop/Progetto/ProgettoRP/build
 include robot_bar/CMakeFiles/robot_bar_generate_messages_nodejs.dir/progress.make
 
 robot_bar/CMakeFiles/robot_bar_generate_messages_nodejs: /home/marta/Desktop/Progetto/ProgettoRP/devel/share/gennodejs/ros/robot_bar/msg/Order.js
+robot_bar/CMakeFiles/robot_bar_generate_messages_nodejs: /home/marta/Desktop/Progetto/ProgettoRP/devel/share/gennodejs/ros/robot_bar/msg/RobotMove.js
+robot_bar/CMakeFiles/robot_bar_generate_messages_nodejs: /home/marta/Desktop/Progetto/ProgettoRP/devel/share/gennodejs/ros/robot_bar/srv/GetTablePosition.js
 
 
 /home/marta/Desktop/Progetto/ProgettoRP/devel/share/gennodejs/ros/robot_bar/msg/Order.js: /opt/ros/noetic/lib/gennodejs/gen_nodejs.py
@@ -61,8 +63,20 @@ robot_bar/CMakeFiles/robot_bar_generate_messages_nodejs: /home/marta/Desktop/Pro
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/marta/Desktop/Progetto/ProgettoRP/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Javascript code from robot_bar/Order.msg"
 	cd /home/marta/Desktop/Progetto/ProgettoRP/build/robot_bar && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/msg/Order.msg -Irobot_bar:/home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_bar -o /home/marta/Desktop/Progetto/ProgettoRP/devel/share/gennodejs/ros/robot_bar/msg
 
+/home/marta/Desktop/Progetto/ProgettoRP/devel/share/gennodejs/ros/robot_bar/msg/RobotMove.js: /opt/ros/noetic/lib/gennodejs/gen_nodejs.py
+/home/marta/Desktop/Progetto/ProgettoRP/devel/share/gennodejs/ros/robot_bar/msg/RobotMove.js: /home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/msg/RobotMove.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/marta/Desktop/Progetto/ProgettoRP/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Javascript code from robot_bar/RobotMove.msg"
+	cd /home/marta/Desktop/Progetto/ProgettoRP/build/robot_bar && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/msg/RobotMove.msg -Irobot_bar:/home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_bar -o /home/marta/Desktop/Progetto/ProgettoRP/devel/share/gennodejs/ros/robot_bar/msg
+
+/home/marta/Desktop/Progetto/ProgettoRP/devel/share/gennodejs/ros/robot_bar/srv/GetTablePosition.js: /opt/ros/noetic/lib/gennodejs/gen_nodejs.py
+/home/marta/Desktop/Progetto/ProgettoRP/devel/share/gennodejs/ros/robot_bar/srv/GetTablePosition.js: /home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/srv/GetTablePosition.srv
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/marta/Desktop/Progetto/ProgettoRP/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Javascript code from robot_bar/GetTablePosition.srv"
+	cd /home/marta/Desktop/Progetto/ProgettoRP/build/robot_bar && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/srv/GetTablePosition.srv -Irobot_bar:/home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_bar -o /home/marta/Desktop/Progetto/ProgettoRP/devel/share/gennodejs/ros/robot_bar/srv
+
 robot_bar_generate_messages_nodejs: robot_bar/CMakeFiles/robot_bar_generate_messages_nodejs
 robot_bar_generate_messages_nodejs: /home/marta/Desktop/Progetto/ProgettoRP/devel/share/gennodejs/ros/robot_bar/msg/Order.js
+robot_bar_generate_messages_nodejs: /home/marta/Desktop/Progetto/ProgettoRP/devel/share/gennodejs/ros/robot_bar/msg/RobotMove.js
+robot_bar_generate_messages_nodejs: /home/marta/Desktop/Progetto/ProgettoRP/devel/share/gennodejs/ros/robot_bar/srv/GetTablePosition.js
 robot_bar_generate_messages_nodejs: robot_bar/CMakeFiles/robot_bar_generate_messages_nodejs.dir/build.make
 
 .PHONY : robot_bar_generate_messages_nodejs

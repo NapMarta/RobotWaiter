@@ -1,7 +1,7 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
-messages_str = "/home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/msg/Order.msg"
-services_str = ""
+messages_str = "/home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/msg/Order.msg;/home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/msg/RobotMove.msg"
+services_str = "/home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/srv/GetTablePosition.srv"
 pkg_name = "robot_bar"
 dependencies_str = "std_msgs"
 langs = "gencpp;geneus;genlisp;gennodejs;genpy"

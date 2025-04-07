@@ -54,7 +54,10 @@ CMAKE_BINARY_DIR = /home/marta/Desktop/Progetto/ProgettoRP/build
 include robot_bar/CMakeFiles/robot_bar_generate_messages_py.dir/progress.make
 
 robot_bar/CMakeFiles/robot_bar_generate_messages_py: /home/marta/Desktop/Progetto/ProgettoRP/devel/lib/python3/dist-packages/robot_bar/msg/_Order.py
+robot_bar/CMakeFiles/robot_bar_generate_messages_py: /home/marta/Desktop/Progetto/ProgettoRP/devel/lib/python3/dist-packages/robot_bar/msg/_RobotMove.py
+robot_bar/CMakeFiles/robot_bar_generate_messages_py: /home/marta/Desktop/Progetto/ProgettoRP/devel/lib/python3/dist-packages/robot_bar/srv/_GetTablePosition.py
 robot_bar/CMakeFiles/robot_bar_generate_messages_py: /home/marta/Desktop/Progetto/ProgettoRP/devel/lib/python3/dist-packages/robot_bar/msg/__init__.py
+robot_bar/CMakeFiles/robot_bar_generate_messages_py: /home/marta/Desktop/Progetto/ProgettoRP/devel/lib/python3/dist-packages/robot_bar/srv/__init__.py
 
 
 /home/marta/Desktop/Progetto/ProgettoRP/devel/lib/python3/dist-packages/robot_bar/msg/_Order.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
@@ -62,14 +65,36 @@ robot_bar/CMakeFiles/robot_bar_generate_messages_py: /home/marta/Desktop/Progett
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/marta/Desktop/Progetto/ProgettoRP/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python from MSG robot_bar/Order"
 	cd /home/marta/Desktop/Progetto/ProgettoRP/build/robot_bar && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/msg/Order.msg -Irobot_bar:/home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_bar -o /home/marta/Desktop/Progetto/ProgettoRP/devel/lib/python3/dist-packages/robot_bar/msg
 
+/home/marta/Desktop/Progetto/ProgettoRP/devel/lib/python3/dist-packages/robot_bar/msg/_RobotMove.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
+/home/marta/Desktop/Progetto/ProgettoRP/devel/lib/python3/dist-packages/robot_bar/msg/_RobotMove.py: /home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/msg/RobotMove.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/marta/Desktop/Progetto/ProgettoRP/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python from MSG robot_bar/RobotMove"
+	cd /home/marta/Desktop/Progetto/ProgettoRP/build/robot_bar && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/msg/RobotMove.msg -Irobot_bar:/home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_bar -o /home/marta/Desktop/Progetto/ProgettoRP/devel/lib/python3/dist-packages/robot_bar/msg
+
+/home/marta/Desktop/Progetto/ProgettoRP/devel/lib/python3/dist-packages/robot_bar/srv/_GetTablePosition.py: /opt/ros/noetic/lib/genpy/gensrv_py.py
+/home/marta/Desktop/Progetto/ProgettoRP/devel/lib/python3/dist-packages/robot_bar/srv/_GetTablePosition.py: /home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/srv/GetTablePosition.srv
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/marta/Desktop/Progetto/ProgettoRP/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Python code from SRV robot_bar/GetTablePosition"
+	cd /home/marta/Desktop/Progetto/ProgettoRP/build/robot_bar && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/srv/GetTablePosition.srv -Irobot_bar:/home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_bar -o /home/marta/Desktop/Progetto/ProgettoRP/devel/lib/python3/dist-packages/robot_bar/srv
+
 /home/marta/Desktop/Progetto/ProgettoRP/devel/lib/python3/dist-packages/robot_bar/msg/__init__.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /home/marta/Desktop/Progetto/ProgettoRP/devel/lib/python3/dist-packages/robot_bar/msg/__init__.py: /home/marta/Desktop/Progetto/ProgettoRP/devel/lib/python3/dist-packages/robot_bar/msg/_Order.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/marta/Desktop/Progetto/ProgettoRP/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python msg __init__.py for robot_bar"
+/home/marta/Desktop/Progetto/ProgettoRP/devel/lib/python3/dist-packages/robot_bar/msg/__init__.py: /home/marta/Desktop/Progetto/ProgettoRP/devel/lib/python3/dist-packages/robot_bar/msg/_RobotMove.py
+/home/marta/Desktop/Progetto/ProgettoRP/devel/lib/python3/dist-packages/robot_bar/msg/__init__.py: /home/marta/Desktop/Progetto/ProgettoRP/devel/lib/python3/dist-packages/robot_bar/srv/_GetTablePosition.py
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/marta/Desktop/Progetto/ProgettoRP/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating Python msg __init__.py for robot_bar"
 	cd /home/marta/Desktop/Progetto/ProgettoRP/build/robot_bar && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/marta/Desktop/Progetto/ProgettoRP/devel/lib/python3/dist-packages/robot_bar/msg --initpy
+
+/home/marta/Desktop/Progetto/ProgettoRP/devel/lib/python3/dist-packages/robot_bar/srv/__init__.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
+/home/marta/Desktop/Progetto/ProgettoRP/devel/lib/python3/dist-packages/robot_bar/srv/__init__.py: /home/marta/Desktop/Progetto/ProgettoRP/devel/lib/python3/dist-packages/robot_bar/msg/_Order.py
+/home/marta/Desktop/Progetto/ProgettoRP/devel/lib/python3/dist-packages/robot_bar/srv/__init__.py: /home/marta/Desktop/Progetto/ProgettoRP/devel/lib/python3/dist-packages/robot_bar/msg/_RobotMove.py
+/home/marta/Desktop/Progetto/ProgettoRP/devel/lib/python3/dist-packages/robot_bar/srv/__init__.py: /home/marta/Desktop/Progetto/ProgettoRP/devel/lib/python3/dist-packages/robot_bar/srv/_GetTablePosition.py
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/marta/Desktop/Progetto/ProgettoRP/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating Python srv __init__.py for robot_bar"
+	cd /home/marta/Desktop/Progetto/ProgettoRP/build/robot_bar && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/marta/Desktop/Progetto/ProgettoRP/devel/lib/python3/dist-packages/robot_bar/srv --initpy
 
 robot_bar_generate_messages_py: robot_bar/CMakeFiles/robot_bar_generate_messages_py
 robot_bar_generate_messages_py: /home/marta/Desktop/Progetto/ProgettoRP/devel/lib/python3/dist-packages/robot_bar/msg/_Order.py
+robot_bar_generate_messages_py: /home/marta/Desktop/Progetto/ProgettoRP/devel/lib/python3/dist-packages/robot_bar/msg/_RobotMove.py
+robot_bar_generate_messages_py: /home/marta/Desktop/Progetto/ProgettoRP/devel/lib/python3/dist-packages/robot_bar/srv/_GetTablePosition.py
 robot_bar_generate_messages_py: /home/marta/Desktop/Progetto/ProgettoRP/devel/lib/python3/dist-packages/robot_bar/msg/__init__.py
+robot_bar_generate_messages_py: /home/marta/Desktop/Progetto/ProgettoRP/devel/lib/python3/dist-packages/robot_bar/srv/__init__.py
 robot_bar_generate_messages_py: robot_bar/CMakeFiles/robot_bar_generate_messages_py.dir/build.make
 
 .PHONY : robot_bar_generate_messages_py

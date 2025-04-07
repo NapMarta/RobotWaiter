@@ -38,7 +38,14 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/robot_bar/msg" TYPE FILE FILES "/home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/msg/Order.msg")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/robot_bar/msg" TYPE FILE FILES
+    "/home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/msg/Order.msg"
+    "/home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/msg/RobotMove.msg"
+    )
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/robot_bar/srv" TYPE FILE FILES "/home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/srv/GetTablePosition.srv")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)

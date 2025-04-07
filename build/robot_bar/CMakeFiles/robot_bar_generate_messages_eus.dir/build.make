@@ -54,6 +54,8 @@ CMAKE_BINARY_DIR = /home/marta/Desktop/Progetto/ProgettoRP/build
 include robot_bar/CMakeFiles/robot_bar_generate_messages_eus.dir/progress.make
 
 robot_bar/CMakeFiles/robot_bar_generate_messages_eus: /home/marta/Desktop/Progetto/ProgettoRP/devel/share/roseus/ros/robot_bar/msg/Order.l
+robot_bar/CMakeFiles/robot_bar_generate_messages_eus: /home/marta/Desktop/Progetto/ProgettoRP/devel/share/roseus/ros/robot_bar/msg/RobotMove.l
+robot_bar/CMakeFiles/robot_bar_generate_messages_eus: /home/marta/Desktop/Progetto/ProgettoRP/devel/share/roseus/ros/robot_bar/srv/GetTablePosition.l
 robot_bar/CMakeFiles/robot_bar_generate_messages_eus: /home/marta/Desktop/Progetto/ProgettoRP/devel/share/roseus/ros/robot_bar/manifest.l
 
 
@@ -62,12 +64,24 @@ robot_bar/CMakeFiles/robot_bar_generate_messages_eus: /home/marta/Desktop/Proget
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/marta/Desktop/Progetto/ProgettoRP/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp code from robot_bar/Order.msg"
 	cd /home/marta/Desktop/Progetto/ProgettoRP/build/robot_bar && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/msg/Order.msg -Irobot_bar:/home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_bar -o /home/marta/Desktop/Progetto/ProgettoRP/devel/share/roseus/ros/robot_bar/msg
 
+/home/marta/Desktop/Progetto/ProgettoRP/devel/share/roseus/ros/robot_bar/msg/RobotMove.l: /opt/ros/noetic/lib/geneus/gen_eus.py
+/home/marta/Desktop/Progetto/ProgettoRP/devel/share/roseus/ros/robot_bar/msg/RobotMove.l: /home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/msg/RobotMove.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/marta/Desktop/Progetto/ProgettoRP/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp code from robot_bar/RobotMove.msg"
+	cd /home/marta/Desktop/Progetto/ProgettoRP/build/robot_bar && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/msg/RobotMove.msg -Irobot_bar:/home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_bar -o /home/marta/Desktop/Progetto/ProgettoRP/devel/share/roseus/ros/robot_bar/msg
+
+/home/marta/Desktop/Progetto/ProgettoRP/devel/share/roseus/ros/robot_bar/srv/GetTablePosition.l: /opt/ros/noetic/lib/geneus/gen_eus.py
+/home/marta/Desktop/Progetto/ProgettoRP/devel/share/roseus/ros/robot_bar/srv/GetTablePosition.l: /home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/srv/GetTablePosition.srv
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/marta/Desktop/Progetto/ProgettoRP/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating EusLisp code from robot_bar/GetTablePosition.srv"
+	cd /home/marta/Desktop/Progetto/ProgettoRP/build/robot_bar && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/srv/GetTablePosition.srv -Irobot_bar:/home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_bar -o /home/marta/Desktop/Progetto/ProgettoRP/devel/share/roseus/ros/robot_bar/srv
+
 /home/marta/Desktop/Progetto/ProgettoRP/devel/share/roseus/ros/robot_bar/manifest.l: /opt/ros/noetic/lib/geneus/gen_eus.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/marta/Desktop/Progetto/ProgettoRP/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp manifest code for robot_bar"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/marta/Desktop/Progetto/ProgettoRP/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating EusLisp manifest code for robot_bar"
 	cd /home/marta/Desktop/Progetto/ProgettoRP/build/robot_bar && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/marta/Desktop/Progetto/ProgettoRP/devel/share/roseus/ros/robot_bar robot_bar std_msgs
 
 robot_bar_generate_messages_eus: robot_bar/CMakeFiles/robot_bar_generate_messages_eus
 robot_bar_generate_messages_eus: /home/marta/Desktop/Progetto/ProgettoRP/devel/share/roseus/ros/robot_bar/msg/Order.l
+robot_bar_generate_messages_eus: /home/marta/Desktop/Progetto/ProgettoRP/devel/share/roseus/ros/robot_bar/msg/RobotMove.l
+robot_bar_generate_messages_eus: /home/marta/Desktop/Progetto/ProgettoRP/devel/share/roseus/ros/robot_bar/srv/GetTablePosition.l
 robot_bar_generate_messages_eus: /home/marta/Desktop/Progetto/ProgettoRP/devel/share/roseus/ros/robot_bar/manifest.l
 robot_bar_generate_messages_eus: robot_bar/CMakeFiles/robot_bar_generate_messages_eus.dir/build.make
 

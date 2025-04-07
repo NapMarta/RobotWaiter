@@ -1,0 +1,10 @@
+(cl:defpackage robot_bar-srv
+  (:use )
+  (:export
+   "GETTABLEPOSITION"
+   "<GETTABLEPOSITION-REQUEST>"
+   "GETTABLEPOSITION-REQUEST"
+   "<GETTABLEPOSITION-RESPONSE>"
+   "GETTABLEPOSITION-RESPONSE"
+  ))
+

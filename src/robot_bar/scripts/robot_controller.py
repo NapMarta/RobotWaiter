@@ -1,6 +1,4 @@
 #!/usr/bin/env python3
-# import sys
-# sys.path.append('/home/marta/Desktop/Progetto/ProgettoRP/devel/lib/python3/dist-packages')
 
 # import rospy
 # from robot_bar.msg import RobotMove

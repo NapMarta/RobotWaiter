@@ -54,6 +54,8 @@ CMAKE_BINARY_DIR = /home/marta/Desktop/Progetto/ProgettoRP/build
 include robot_bar/CMakeFiles/robot_bar_generate_messages_cpp.dir/progress.make
 
 robot_bar/CMakeFiles/robot_bar_generate_messages_cpp: /home/marta/Desktop/Progetto/ProgettoRP/devel/include/robot_bar/Order.h
+robot_bar/CMakeFiles/robot_bar_generate_messages_cpp: /home/marta/Desktop/Progetto/ProgettoRP/devel/include/robot_bar/RobotMove.h
+robot_bar/CMakeFiles/robot_bar_generate_messages_cpp: /home/marta/Desktop/Progetto/ProgettoRP/devel/include/robot_bar/GetTablePosition.h
 
 
 /home/marta/Desktop/Progetto/ProgettoRP/devel/include/robot_bar/Order.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
@@ -62,8 +64,23 @@ robot_bar/CMakeFiles/robot_bar_generate_messages_cpp: /home/marta/Desktop/Proget
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/marta/Desktop/Progetto/ProgettoRP/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code from robot_bar/Order.msg"
 	cd /home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar && /home/marta/Desktop/Progetto/ProgettoRP/build/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/msg/Order.msg -Irobot_bar:/home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_bar -o /home/marta/Desktop/Progetto/ProgettoRP/devel/include/robot_bar -e /opt/ros/noetic/share/gencpp/cmake/..
 
+/home/marta/Desktop/Progetto/ProgettoRP/devel/include/robot_bar/RobotMove.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
+/home/marta/Desktop/Progetto/ProgettoRP/devel/include/robot_bar/RobotMove.h: /home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/msg/RobotMove.msg
+/home/marta/Desktop/Progetto/ProgettoRP/devel/include/robot_bar/RobotMove.h: /opt/ros/noetic/share/gencpp/msg.h.template
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/marta/Desktop/Progetto/ProgettoRP/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating C++ code from robot_bar/RobotMove.msg"
+	cd /home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar && /home/marta/Desktop/Progetto/ProgettoRP/build/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/msg/RobotMove.msg -Irobot_bar:/home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_bar -o /home/marta/Desktop/Progetto/ProgettoRP/devel/include/robot_bar -e /opt/ros/noetic/share/gencpp/cmake/..
+
+/home/marta/Desktop/Progetto/ProgettoRP/devel/include/robot_bar/GetTablePosition.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
+/home/marta/Desktop/Progetto/ProgettoRP/devel/include/robot_bar/GetTablePosition.h: /home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/srv/GetTablePosition.srv
+/home/marta/Desktop/Progetto/ProgettoRP/devel/include/robot_bar/GetTablePosition.h: /opt/ros/noetic/share/gencpp/msg.h.template
+/home/marta/Desktop/Progetto/ProgettoRP/devel/include/robot_bar/GetTablePosition.h: /opt/ros/noetic/share/gencpp/srv.h.template
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/marta/Desktop/Progetto/ProgettoRP/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating C++ code from robot_bar/GetTablePosition.srv"
+	cd /home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar && /home/marta/Desktop/Progetto/ProgettoRP/build/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/srv/GetTablePosition.srv -Irobot_bar:/home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_bar -o /home/marta/Desktop/Progetto/ProgettoRP/devel/include/robot_bar -e /opt/ros/noetic/share/gencpp/cmake/..
+
 robot_bar_generate_messages_cpp: robot_bar/CMakeFiles/robot_bar_generate_messages_cpp
 robot_bar_generate_messages_cpp: /home/marta/Desktop/Progetto/ProgettoRP/devel/include/robot_bar/Order.h
+robot_bar_generate_messages_cpp: /home/marta/Desktop/Progetto/ProgettoRP/devel/include/robot_bar/RobotMove.h
+robot_bar_generate_messages_cpp: /home/marta/Desktop/Progetto/ProgettoRP/devel/include/robot_bar/GetTablePosition.h
 robot_bar_generate_messages_cpp: robot_bar/CMakeFiles/robot_bar_generate_messages_cpp.dir/build.make
 
 .PHONY : robot_bar_generate_messages_cpp

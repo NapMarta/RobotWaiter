@@ -54,6 +54,8 @@ CMAKE_BINARY_DIR = /home/marta/Desktop/Progetto/ProgettoRP/build
 include robot_bar/CMakeFiles/robot_bar_generate_messages_lisp.dir/progress.make
 
 robot_bar/CMakeFiles/robot_bar_generate_messages_lisp: /home/marta/Desktop/Progetto/ProgettoRP/devel/share/common-lisp/ros/robot_bar/msg/Order.lisp
+robot_bar/CMakeFiles/robot_bar_generate_messages_lisp: /home/marta/Desktop/Progetto/ProgettoRP/devel/share/common-lisp/ros/robot_bar/msg/RobotMove.lisp
+robot_bar/CMakeFiles/robot_bar_generate_messages_lisp: /home/marta/Desktop/Progetto/ProgettoRP/devel/share/common-lisp/ros/robot_bar/srv/GetTablePosition.lisp
 
 
 /home/marta/Desktop/Progetto/ProgettoRP/devel/share/common-lisp/ros/robot_bar/msg/Order.lisp: /opt/ros/noetic/lib/genlisp/gen_lisp.py
@@ -61,8 +63,20 @@ robot_bar/CMakeFiles/robot_bar_generate_messages_lisp: /home/marta/Desktop/Proge
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/marta/Desktop/Progetto/ProgettoRP/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Lisp code from robot_bar/Order.msg"
 	cd /home/marta/Desktop/Progetto/ProgettoRP/build/robot_bar && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/msg/Order.msg -Irobot_bar:/home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_bar -o /home/marta/Desktop/Progetto/ProgettoRP/devel/share/common-lisp/ros/robot_bar/msg
 
+/home/marta/Desktop/Progetto/ProgettoRP/devel/share/common-lisp/ros/robot_bar/msg/RobotMove.lisp: /opt/ros/noetic/lib/genlisp/gen_lisp.py
+/home/marta/Desktop/Progetto/ProgettoRP/devel/share/common-lisp/ros/robot_bar/msg/RobotMove.lisp: /home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/msg/RobotMove.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/marta/Desktop/Progetto/ProgettoRP/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Lisp code from robot_bar/RobotMove.msg"
+	cd /home/marta/Desktop/Progetto/ProgettoRP/build/robot_bar && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/msg/RobotMove.msg -Irobot_bar:/home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_bar -o /home/marta/Desktop/Progetto/ProgettoRP/devel/share/common-lisp/ros/robot_bar/msg
+
+/home/marta/Desktop/Progetto/ProgettoRP/devel/share/common-lisp/ros/robot_bar/srv/GetTablePosition.lisp: /opt/ros/noetic/lib/genlisp/gen_lisp.py
+/home/marta/Desktop/Progetto/ProgettoRP/devel/share/common-lisp/ros/robot_bar/srv/GetTablePosition.lisp: /home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/srv/GetTablePosition.srv
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/marta/Desktop/Progetto/ProgettoRP/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Lisp code from robot_bar/GetTablePosition.srv"
+	cd /home/marta/Desktop/Progetto/ProgettoRP/build/robot_bar && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/srv/GetTablePosition.srv -Irobot_bar:/home/marta/Desktop/Progetto/ProgettoRP/src/robot_bar/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_bar -o /home/marta/Desktop/Progetto/ProgettoRP/devel/share/common-lisp/ros/robot_bar/srv
+
 robot_bar_generate_messages_lisp: robot_bar/CMakeFiles/robot_bar_generate_messages_lisp
 robot_bar_generate_messages_lisp: /home/marta/Desktop/Progetto/ProgettoRP/devel/share/common-lisp/ros/robot_bar/msg/Order.lisp
+robot_bar_generate_messages_lisp: /home/marta/Desktop/Progetto/ProgettoRP/devel/share/common-lisp/ros/robot_bar/msg/RobotMove.lisp
+robot_bar_generate_messages_lisp: /home/marta/Desktop/Progetto/ProgettoRP/devel/share/common-lisp/ros/robot_bar/srv/GetTablePosition.lisp
 robot_bar_generate_messages_lisp: robot_bar/CMakeFiles/robot_bar_generate_messages_lisp.dir/build.make
 
 .PHONY : robot_bar_generate_messages_lisp
