@@ -1,17 +1,10 @@
 #!/usr/bin/env python3
-import sys
-sys.path.append('/home/marta/Desktop/Progetto/ProgettoRP/devel/lib/python3/dist-packages')
-
 import rospy
 from std_msgs.msg import String
+from robot_bar.msg import Order
 
-def order_callback(msg):
-    rospy.loginfo(f"Ricevuto ordine: {msg.data}")
-    
-    # Simulazione di decodifica dell'ordine
-    order_data = msg.data.split(",")  # Es: "caffè,3"
-    prodotto = order_data[0]
-    tavolo = int(order_data[1])
+""" def order_callback(msg):
+    rospy.loginfo(f"Ricevuto ordine: {msg.id_ordine}")
     
     # Chiamare il servizio per ottenere la posizione del tavolo
     # rospy.wait_for_service('/get_table_position')
@@ -31,7 +24,17 @@ def order_callback(msg):
 
 def delivery_manager():
     rospy.init_node('delivery_manager', anonymous=True)
-    rospy.Subscriber('/ordine', String, order_callback)
+    rospy.Subscriber('/ordine', Order, order_callback)
+    rospy.spin()
+ """
+
+def callback(msg):
+    rospy.loginfo(f"Ordine ricevuto: ID={msg.id_ordine}, Prodotto={msg.prodotto}, Tavolo={msg.tavolo}")
+
+def delivery_manager():
+    rospy.init_node('delivery_manager', anonymous=True)
+    rospy.Subscriber("/ordine", Order, callback)
+    rospy.loginfo("delivery_manager in ascolto su /ordine...")
     rospy.spin()
 
 if __name__ == '__main__':

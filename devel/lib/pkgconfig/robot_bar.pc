@@ -3,6 +3,6 @@ prefix=/home/marta/Desktop/Progetto/ProgettoRP/devel
 Name: robot_bar
 Description: Description of robot_bar
 Version: 0.0.0
-Cflags: 
+Cflags: -I/home/marta/Desktop/Progetto/ProgettoRP/devel/include
 Libs: -L${prefix}/lib 
-Requires: 
+Requires: geometry_msgs rospy std_msgs message_runtime
