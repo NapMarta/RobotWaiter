@@ -1,5 +1,6 @@
 <launch>
     <node pkg="robot_bar" type="table_locator.py" name="table_locator" output="screen"/>
+    <node pkg="robot_bar" type="robot_controller.py" name="robot_controller" output="screen"/>
     <node pkg="robot_bar" type="delivery_manager.py" name="delivery_manager" output="screen"/>
     <node pkg="robot_bar" type="order_manager.py" name="order_manager" output="screen"/>
 </launch>

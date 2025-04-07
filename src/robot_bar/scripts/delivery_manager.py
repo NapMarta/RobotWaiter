@@ -6,7 +6,7 @@
 
 import rospy
 from std_msgs.msg import String
-from robot_bar.msg import Order
+from robot_bar.msg import Order, RobotMove
 from robot_bar.srv import GetTablePosition
 
 def get_position(tavolo):
@@ -27,10 +27,10 @@ def order_callback(msg):
     rospy.loginfo(f"La posizione del tavolo {msg.tavolo} è (x: {response.x}, y: {response.y})")
 
     # Pubblicare il comando di movimento
-    # move_pub = rospy.Publisher('/movimento_robot', RobotMove, queue_size=10)
-    # move_msg = RobotMove(tavolo=tavolo, x=response.x, y=response.y)
-    # move_pub.publish(move_msg)
-    # rospy.loginfo(f"Inviato comando al robot per il tavolo {tavolo}")
+    move_pub = rospy.Publisher('/movimento_robot', RobotMove, queue_size=10)
+    move_msg = RobotMove(tavolo=msg.tavolo, x=response.x, y=response.y)
+    move_pub.publish(move_msg)
+    rospy.loginfo(f"Inviato comando al robot per il tavolo {msg.tavolo}")
         
 
 

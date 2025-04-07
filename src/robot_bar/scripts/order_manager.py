@@ -4,14 +4,18 @@
 """
 
 import rospy
-from std_msgs.msg import String
 from robot_bar.msg import Order  # Importa il tuo messaggio custom
+from std_msgs.msg import String
 import random
+
+def callback_consegna(msg):
+    rospy.loginfo(f"[CONFERMA] {msg.data}")
 
 def order_manager():
     rospy.init_node('order_manager', anonymous=True)
     rate = rospy.Rate(2)
     pub = rospy.Publisher("/ordine", Order, queue_size=10)
+    rospy.Subscriber("/consegna_completata", String, callback_consegna)
 
     i = 1
     while not rospy.is_shutdown():
