@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<robot name="RobotProgramming">
+    <link name="base_link">
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="1.0"/>
+            <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="1.0" izz="0.0"/>
+        </inertial>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        </collision>
+        <visual>
+            <geometry>
+                <cylinder radius="0.3" length="0.3"/>
+            </geometry>
+        </visual>
+    </link>
+    <link name="body_link">
+        <visual name="body">
+            <origin xyz="0.0 0 0.3" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.3 0.3 0.3"/>
+            </geometry>
+            <material name="metal">
+                <color rgba="1.0 0.0 1.0 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.3 0.3 0.3"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="base_to_body" type="fixed">
+        <parent link="base_link"/>
+        <child link="body_link"/>
+    </joint>
+</robot>

@@ -1,0 +1,14 @@
+<launch>
+  <!-- Carica il file URDF -->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find robot_bar)/urdf/robot.urdf'" />
+
+  <!-- Pubblica gli stati del robot -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen"/>
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" output="screen"/>
+
+  <!-- Carica la mappa -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find robot_bar)/maps/TestMap.yaml" output="screen"/>
+
+  <!-- Visualizzazione RViz -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find robot_bar)/config/robot.rviz" required="true" />
+</launch>
