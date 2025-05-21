@@ -34,3 +34,9 @@ roslaunch robot_bar robot_bar.launch
 rosservice list
 rqt_graph 
 # -> rqt_graph per monitorare i topic e rosservice list per monitorare i servizi
+
+
+### COMANDI PER GENERARE LA VISUALIZZAZIONE DEL robot_waiter
+cd ~/Desktop/Progetto/ProgettoRP/src/robot_bar/urdf
+xacro robot_waiter.xacro -o robot_waiter.urdf
+

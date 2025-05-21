@@ -1,30 +1,36 @@
 <?xml version="1.0"?>
-<!-- robot_waiter.xacro: robot cameriere con ruote sferiche sotto la base -->
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="robot_waiter">
 
-  <!-- Macro materiali -->
+  <!-- Material macros -->
   <xacro:macro name="material_def" params="name r g b a">
     <material name="${name}">
       <color rgba="${r} ${g} ${b} ${a}"/>
     </material>
   </xacro:macro>
 
-  <!-- Materiali -->
+  <!-- Materials -->
   <xacro:material_def name="body_mat" r="0.8" g="0.8" b="0.8" a="1.0"/>
   <xacro:material_def name="wheel_mat" r="0.1" g="0.1" b="0.1" a="1.0"/>
   <xacro:material_def name="tray_mat" r="0.9" g="0.7" b="0.2" a="1.0"/>
 
-  <!-- Proprietà -->
+  <!-- Parameters -->
   <xacro:property name="wheel_radius" value="0.07"/>
   <xacro:property name="base_radius" value="0.25"/>
   <xacro:property name="base_height" value="0.1"/>
-  <xacro:property name="base_z" value="${wheel_radius}"/> <!-- Base tocca terra -->
+  <xacro:property name="base_z" value="0.05"/> <!-- ABBASSATO -->
   <xacro:property name="wheel_offset" value="0.18"/>
   <xacro:property name="tray_length" value="0.5"/>
   <xacro:property name="tray_width" value="0.3"/>
   <xacro:property name="tray_thickness" value="0.02"/>
 
-  <!-- Base cilindrica -->
+  <!-- Gazebo plugins -->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/robot_waiter</robotNamespace>
+    </plugin>
+  </gazebo>
+
+  <!-- Base -->
   <link name="base_link">
     <visual>
       <origin xyz="0 0 ${wheel_radius + base_z}" rpy="0 0 0"/>
@@ -41,120 +47,50 @@
     </collision>
     <inertial>
       <mass value="5.0"/>
-      <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
-      <origin xyz="0 0 ${base_z}"/>
+      <origin xyz="0 0 ${base_z}" rpy="0 0 0"/>
+      <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1" iyz="0" izz="0.1"/>
     </inertial>
   </link>
+  <gazebo reference="base_link">
+    <material>Gazebo/Grey</material>
+  </gazebo>
 
-  <!-- Ruote sferiche (sfere) -->
-  <!-- Posizione a terra (origine centro sfera a z=wheel_radius) -->
-  <!-- Ruota anteriore sinistra -->
-  <link name="wheel_fl_link">
-    <visual>
-      <origin xyz="${wheel_offset} ${wheel_offset} ${wheel_radius}" rpy="0 0 0"/>
-      <geometry>
-        <sphere radius="${wheel_radius}"/>
-      </geometry>
-      <material name="wheel_mat"/>
-    </visual>
-    <collision>
-      <origin xyz="${wheel_offset} ${wheel_offset} ${wheel_radius}" rpy="0 0 0"/>
-      <geometry>
-        <sphere radius="${wheel_radius}"/>
-      </geometry>
-    </collision>
-    <inertial>
-      <mass value="1.0"/>
-      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
-    </inertial>
-  </link>
-  <joint name="base_to_wheel_fl" type="continuous">
-    <parent link="base_link"/>
-    <child link="wheel_fl_link"/>
-    <origin xyz="${wheel_offset} ${wheel_offset} 0.0" rpy="0 0 0"/>
-    <axis xyz="0 1 0"/>
-  </joint>
+  <!-- Macro per ruote -->
+  <xacro:macro name="spherical_wheel" params="name x y">
+    <link name="${name}">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <sphere radius="${wheel_radius}"/>
+        </geometry>
+        <material name="wheel_mat"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <sphere radius="${wheel_radius}"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="1.0"/>
+        <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/>
+      </inertial>
+    </link>
+    <joint name="base_to_${name}" type="fixed">
+      <parent link="base_link"/>
+      <child link="${name}"/>
+      <origin xyz="${x} ${y} 0.0" rpy="0 0 0"/>
+    </joint>
+    <gazebo reference="${name}">
+      <material>Gazebo/Black</material>
+    </gazebo>
+  </xacro:macro>
 
-  <!-- Ruota anteriore destra -->
-  <link name="wheel_fr_link">
-    <visual>
-      <origin xyz="${wheel_offset} -${wheel_offset} ${wheel_radius}" rpy="0 0 0"/>
-      <geometry>
-        <sphere radius="${wheel_radius}"/>
-      </geometry>
-      <material name="wheel_mat"/>
-    </visual>
-    <collision>
-      <origin xyz="${wheel_offset} -${wheel_offset} ${wheel_radius}" rpy="0 0 0"/>
-      <geometry>
-        <sphere radius="${wheel_radius}"/>
-      </geometry>
-    </collision>
-    <inertial>
-      <mass value="1.0"/>
-      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
-    </inertial>
-  </link>
-  <joint name="base_to_wheel_fr" type="continuous">
-    <parent link="base_link"/>
-    <child link="wheel_fr_link"/>
-    <origin xyz="${wheel_offset} -${wheel_offset} 0.0" rpy="0 0 0"/>
-    <axis xyz="0 1 0"/>
-  </joint>
-
-  <!-- Ruota posteriore sinistra -->
-  <link name="wheel_rl_link">
-    <visual>
-      <origin xyz="-${wheel_offset} ${wheel_offset} ${wheel_radius}" rpy="0 0 0"/>
-      <geometry>
-        <sphere radius="${wheel_radius}"/>
-      </geometry>
-      <material name="wheel_mat"/>
-    </visual>
-    <collision>
-      <origin xyz="-${wheel_offset} ${wheel_offset} ${wheel_radius}" rpy="0 0 0"/>
-      <geometry>
-        <sphere radius="${wheel_radius}"/>
-      </geometry>
-    </collision>
-    <inertial>
-      <mass value="1.0"/>
-      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
-    </inertial>
-  </link>
-  <joint name="base_to_wheel_rl" type="continuous">
-    <parent link="base_link"/>
-    <child link="wheel_rl_link"/>
-    <origin xyz="-${wheel_offset} ${wheel_offset} 0.0" rpy="0 0 0"/>
-    <axis xyz="0 1 0"/>
-  </joint>
-
-  <!-- Ruota posteriore destra -->
-  <link name="wheel_rr_link">
-    <visual>
-      <origin xyz="-${wheel_offset} -${wheel_offset} ${wheel_radius}" rpy="0 0 0"/>
-      <geometry>
-        <sphere radius="${wheel_radius}"/>
-      </geometry>
-      <material name="wheel_mat"/>
-    </visual>
-    <collision>
-      <origin xyz="-${wheel_offset} -${wheel_offset} ${wheel_radius}" rpy="0 0 0"/>
-      <geometry>
-        <sphere radius="${wheel_radius}"/>
-      </geometry>
-    </collision>
-    <inertial>
-      <mass value="1.0"/>
-      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
-    </inertial>
-  </link>
-  <joint name="base_to_wheel_rr" type="continuous">
-    <parent link="base_link"/>
-    <child link="wheel_rr_link"/>
-    <origin xyz="-${wheel_offset} -${wheel_offset} 0.0" rpy="0 0 0"/>
-    <axis xyz="0 1 0"/>
-  </joint>
+  <!-- Quattro ruote -->
+  <xacro:spherical_wheel name="wheel_fl_link" x="${wheel_offset}" y="${wheel_offset}"/>
+  <xacro:spherical_wheel name="wheel_fr_link" x="${wheel_offset}" y="-${wheel_offset}"/>
+  <xacro:spherical_wheel name="wheel_rl_link" x="-${wheel_offset}" y="${wheel_offset}"/>
+  <xacro:spherical_wheel name="wheel_rr_link" x="-${wheel_offset}" y="-${wheel_offset}"/>
 
   <!-- Vassoio -->
   <link name="tray_link">
@@ -173,14 +109,17 @@
     </collision>
     <inertial>
       <mass value="2.0"/>
-      <inertia ixx="0.02" ixy="0.0" ixz="0.0" iyy="0.02" iyz="0.0" izz="0.02"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.02" ixy="0" ixz="0" iyy="0.02" iyz="0" izz="0.02"/>
     </inertial>
   </link>
-
   <joint name="base_to_tray" type="fixed">
     <parent link="base_link"/>
     <child link="tray_link"/>
     <origin xyz="0 0 0" rpy="0 0 0"/>
   </joint>
+  <gazebo reference="tray_link">
+    <material>Gazebo/Gold</material>
+  </gazebo>
 
 </robot>

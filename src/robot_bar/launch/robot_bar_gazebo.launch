@@ -1,49 +1,16 @@
 <launch>
-    <!-- === ARGOMENTI === -->
-  <arg name="x" default="0.0"/>
-  <arg name="y" default="0.0"/>
-  <arg name="z" default="0.1"/>
-  <arg name="world_name" default="$(find robot_bar)/worlds/robot_bar.world"/>
+  <!-- 1) Avvia Gazebo con mondo vuoto -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch"/>
 
-  <!-- === GAZEBO === -->
-  <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(arg world_name)"/>
-    <arg name="paused" value="false"/>
-    <arg name="use_sim_time" value="true"/>
-  </include>
+  <!-- 2) Carica il file URDF statico generato da Xacro -->
+  <param name="robot_description" command="cat $(find robot_bar)/urdf/robot_waiter.urdf"/>
 
-  <!-- === ATTENZIONE: qui uso XACRO inline === -->
-  <param name="robot_description"
-         command="$(find xacro)/xacro --inorder
-                  '$(find robot_bar)/urdf/robot_waiter.xacro'" />
-
+  <!-- 3) Publisher degli stati dei giunti -->
   <node name="robot_state_publisher"
-        pkg="robot_state_publisher"
-        type="robot_state_publisher"/>
+        pkg="robot_state_publisher" type="robot_state_publisher"/>
 
-  <node name="joint_state_publisher"
-        pkg="joint_state_publisher"
-        type="joint_state_publisher"/>
-
-  <node name="spawn_robot"
-        pkg="gazebo_ros"
-        type="spawn_model"
-        args="-param robot_description -urdf -model robot_waiter
-              -x $(arg x) -y $(arg y) -z $(arg z)"
+  <!-- 4) Visualizza il robot in Gazebo -->
+  <node name="spawn_robot" pkg="gazebo_ros" type="spawn_model"
+        args="-param robot_description -urdf -model robot_waiter -x 0 -y 0 -z 0.1"
         output="screen"/>
-
-  <!-- === MAP SERVER === -->
-  <node name="map_server" pkg="map_server" type="map_server"
-        args="$(find robot_bar)/maps/TestMap.yaml"
-        output="screen" />
-
-  <!-- === TF STATIC TRANSFORM: map -> base_link === -->
-  <node pkg="tf2_ros" type="static_transform_publisher"
-        name="map_to_base"
-        args="0 0 0 0 0 0 map base_link" />
-
-  <!-- === RVIZ === -->
-  <node name="rviz" pkg="rviz" type="rviz"
-        args="-d $(find robot_bar)/config/robot_waiter.rviz"
-        output="screen" />
 </launch>
