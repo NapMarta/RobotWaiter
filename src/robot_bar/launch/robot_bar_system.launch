@@ -1,0 +1,10 @@
+<launch>
+  <!-- Avvia Gazebo, il robot, e la mappa -->
+  <include file="$(find robot_bar)/launch/robot_waiter_sim.launch"/>
+
+  <!-- Lancia i nodi della logica del robot cameriere -->
+  <node pkg="robot_bar" type="table_locator.py" name="table_locator" output="screen"/>
+  <node pkg="robot_bar" type="robot_controller.py" name="robot_controller" output="screen"/>
+  <node pkg="robot_bar" type="delivery_manager.py" name="delivery_manager" output="screen"/>
+  <node pkg="robot_bar" type="order_manager.py" name="order_manager" output="screen"/>
+</launch>
