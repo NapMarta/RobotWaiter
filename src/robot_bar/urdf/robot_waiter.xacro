@@ -1,0 +1,192 @@
+<?xml version="1.0"?>
+<!-- robot_waiter.xacro: modello di un robot cameriere con base mobile e vassoio -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="robot_waiter">
+
+  <!-- Macro per definire materiali riutilizzabili -->
+  <xacro:macro name="material_def" params="name r g b a">
+    <material name="${name}">
+      <color rgba="${r} ${g} ${b} ${a}"/>
+    </material>
+  </xacro:macro>
+
+  <!-- Definizione materiali -->
+  <xacro:material_def name="body_mat" r="0.8" g="0.8" b="0.8" a="1.0"/>
+  <xacro:material_def name="wheel_mat" r="0.1" g="0.1" b="0.1" a="1.0"/>
+  <xacro:material_def name="tray_mat" r="0.9" g="0.7" b="0.2" a="1.0"/>
+
+  <!-- Proprietà base -->
+  <xacro:property name="base_radius" value="0.25"/>
+  <xacro:property name="base_height" value="0.1"/>
+  <xacro:property name="wheel_radius" value="0.07"/>
+  <xacro:property name="wheel_width" value="0.03"/>
+  <xacro:property name="tray_length" value="0.5"/>
+  <xacro:property name="tray_width" value="0.3"/>
+  <xacro:property name="tray_thickness" value="0.02"/>
+
+  <!-- Base cilindrica -->
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 ${base_height/2}" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="${base_radius}" length="${base_height}"/>
+      </geometry>
+      <material name="body_mat"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 ${base_height/2}" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="${base_radius}" length="${base_height}"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="5.0"/>
+      <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.1"/>
+      <origin xyz="0 0 ${base_height/2}"/>
+    </inertial>
+  </link>
+
+
+  <!-- Quattro ruote -->
+  <!-- Ruota anteriore sinistra -->
+  <link name="wheel_fl_link">
+    <visual>
+      <origin xyz="${base_radius/sqrt(2)} ${base_radius/sqrt(2)} 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
+      </geometry>
+      <material name="wheel_mat"/>
+    </visual>
+    <collision>
+      <origin xyz="${base_radius/sqrt(2)} ${base_radius/sqrt(2)} 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.0"/>
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+    </inertial>
+  </link>
+  <joint name="base_to_wheel_fl" type="continuous">
+    <parent link="base_link"/>
+    <child link="wheel_fl_link"/>
+    <origin xyz="${base_radius/sqrt(2)} ${base_radius/sqrt(2)} ${wheel_radius}" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <!-- Ruota anteriore destra -->
+  <link name="wheel_fr_link">
+    <visual>
+      <origin xyz="${base_radius/sqrt(2)} -${base_radius/sqrt(2)} 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
+      </geometry>
+      <material name="wheel_mat"/>
+    </visual>
+    <collision>
+      <origin xyz="${base_radius/sqrt(2)} -${base_radius/sqrt(2)} 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.0"/>
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+    </inertial>
+  </link>
+  <joint name="base_to_wheel_fr" type="continuous">
+    <parent link="base_link"/>
+    <child link="wheel_fr_link"/>
+    <origin xyz="${base_radius/sqrt(2)} -${base_radius/sqrt(2)} ${wheel_radius}" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <!-- Ruota posteriore sinistra -->
+  <link name="wheel_rl_link">
+    <visual>
+      <origin xyz="-${base_radius/sqrt(2)} ${base_radius/sqrt(2)} 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
+      </geometry>
+      <material name="wheel_mat"/>
+    </visual>
+    <collision>
+      <origin xyz="-${base_radius/sqrt(2)} ${base_radius/sqrt(2)} 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.0"/>
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+    </inertial>
+  </link>
+  <joint name="base_to_wheel_rl" type="continuous">
+    <parent link="base_link"/>
+    <child link="wheel_rl_link"/>
+    <origin xyz="-${base_radius/sqrt(2)} ${base_radius/sqrt(2)} ${wheel_radius}" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <!-- Ruota posteriore destra -->
+  <link name="wheel_rr_link">
+    <visual>
+      <origin xyz="-${base_radius/sqrt(2)} -${base_radius/sqrt(2)} 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
+      </geometry>
+      <material name="wheel_mat"/>
+    </visual>
+    <collision>
+      <origin xyz="-${base_radius/sqrt(2)} -${base_radius/sqrt(2)} 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="${wheel_radius}" length="${wheel_width}"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.0"/>
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+    </inertial>
+  </link>
+  <joint name="base_to_wheel_rr" type="continuous">
+    <parent link="base_link"/>
+    <child link="wheel_rr_link"/>
+    <origin xyz="-${base_radius/sqrt(2)} -${base_radius/sqrt(2)} ${wheel_radius}" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+
+
+  <!-- Vassoio -->
+  <link name="tray_link">
+    <visual>
+      <origin xyz="0 0 ${base_height + tray_thickness/2 + wheel_radius}" rpy="0 0 0"/>
+      <geometry>
+        <box size="${tray_length} ${tray_width} ${tray_thickness}"/>
+      </geometry>
+      <material name="tray_mat"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 ${base_height + tray_thickness/2 + wheel_radius}" rpy="0 0 0"/>
+      <geometry>
+        <box size="${tray_length} ${tray_width} ${tray_thickness}"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="2.0"/>
+      <inertia ixx="0.02" ixy="0.0" ixz="0.0" iyy="0.02" iyz="0.0" izz="0.02"/>
+    </inertial>
+  </link>
+
+  <joint name="base_to_tray" type="fixed">
+    <parent link="base_link"/>
+    <child link="tray_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Gazebo static -->
+  <gazebo reference="base_link">
+    <static>true</static>
+  </gazebo>
+
+</robot>
