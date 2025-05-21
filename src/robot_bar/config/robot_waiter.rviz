@@ -6,6 +6,8 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
+        - /RobotModel1
+        - /RobotModel1/Status1
       Splitter Ratio: 0.5
     Tree Height: 549
   - Class: rviz/Selection
@@ -141,9 +143,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.03479663282632828
+      Pitch: 0.39979660511016846
       Target Frame: <Fixed Frame>
-      Yaw: 2.3503994941711426
+      Yaw: 3.095399856567383
     Saved: ~
 Window Geometry:
   Displays:
