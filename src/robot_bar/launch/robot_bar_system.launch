@@ -1,10 +1,34 @@
 <launch>
-  <!-- Avvia Gazebo, il robot, e la mappa -->
-  <include file="$(find robot_bar)/launch/robot_waiter_sim.launch"/>
+  <!-- 1) Avvia Gazebo con la mappa robot_bar -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find robot_bar)/world/robot_bar.world"/>
+  </include>
 
-  <!-- Lancia i nodi della logica del robot cameriere -->
-  <node pkg="robot_bar" type="table_locator.py" name="table_locator" output="screen"/>
-  <node pkg="robot_bar" type="robot_controller.py" name="robot_controller" output="screen"/>
-  <node pkg="robot_bar" type="delivery_manager.py" name="delivery_manager" output="screen"/>
-  <node pkg="robot_bar" type="order_manager.py" name="order_manager" output="screen"/>
+  <!-- 2) Carica il file URDF generato da Xacro -->
+  <param name="robot_description" command="cat $(find robot_bar)/urdf/robot_waiter.urdf"/>
+
+  <!-- 3) Publisher per gli stati dei giunti -->
+  <node name="robot_state_publisher"
+        pkg="robot_state_publisher"
+        type="robot_state_publisher"
+        output="screen" />
+
+  <!-- 4) Spawna il robot nella mappa -->
+  <node name="spawn_robot" pkg="gazebo_ros" type="spawn_model"
+        args="-param robot_description -urdf -model robot_waiter -x 0 -y 0 -z 0.1"
+        output="screen"/>
+
+  <!-- 5) Nodi della logica del robot cameriere - *dopo* che Gazebo è caricato -->
+  <node pkg="robot_bar" type="table_locator.py" name="table_locator"
+      output="screen" respawn="true" launch-prefix="bash -c 'sleep 120; $0'" />
+
+  <node pkg="robot_bar" type="robot_controller.py" name="robot_controller"
+        output="screen" respawn="true" launch-prefix="bash -c 'sleep 120; $0'" />
+
+  <node pkg="robot_bar" type="delivery_manager.py" name="delivery_manager"
+        output="screen" respawn="true" launch-prefix="bash -c 'sleep 120; $0'" />
+
+  <node pkg="robot_bar" type="order_manager.py" name="order_manager"
+        output="screen" respawn="true" launch-prefix="bash -c 'sleep 120; $0'" />
+
 </launch>

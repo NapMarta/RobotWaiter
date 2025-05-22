@@ -5,6 +5,7 @@
 """
 
 import rospy
+import rosnode
 from std_msgs.msg import String
 from robot_bar.msg import Order, RobotMove
 from robot_bar.srv import GetTablePosition
@@ -36,6 +37,15 @@ def order_callback(msg):
 
 def delivery_manager():
     rospy.init_node('delivery_manager', anonymous=True)
+    while not rospy.is_shutdown():
+        try:
+            nodes = rosnode.get_node_names()
+            if '/gazebo' in nodes:
+                break
+        except:
+            pass
+        rospy.sleep(1)
+
     rospy.Subscriber("/ordine", Order, order_callback)
     rospy.loginfo("delivery_manager in ascolto su /ordine...")
     rospy.spin()

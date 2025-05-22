@@ -4,6 +4,7 @@
 """
 
 import rospy
+import rosnode
 from robot_bar.msg import Order  # Importa il tuo messaggio custom
 from std_msgs.msg import String
 import random
@@ -13,6 +14,15 @@ def callback_consegna(msg):
 
 def order_manager():
     rospy.init_node('order_manager', anonymous=True)
+    while not rospy.is_shutdown():
+        try:
+            nodes = rosnode.get_node_names()
+            if '/gazebo' in nodes:
+                break
+        except:
+            pass
+        rospy.sleep(1)
+
     rate = rospy.Rate(2)
     pub = rospy.Publisher("/ordine", Order, queue_size=10)
     rospy.Subscriber("/consegna_completata", String, callback_consegna)

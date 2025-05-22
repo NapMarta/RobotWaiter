@@ -4,6 +4,7 @@
 """
 
 import rospy
+import rosnode
 from robot_bar.srv import GetTablePosition, GetTablePositionResponse
 
 # Mappa fittizia dei tavoli
@@ -23,6 +24,15 @@ def handle_get_position(req):
 
 def table_locator():
     rospy.init_node('table_locator')
+    while not rospy.is_shutdown():
+        try:
+            nodes = rosnode.get_node_names()
+            if '/gazebo' in nodes:
+                break
+        except:
+            pass
+        rospy.sleep(1)
+
     service = rospy.Service('get_table_position', GetTablePosition, handle_get_position)
     rospy.loginfo("Servizio get_table_position pronto")
     rospy.spin()
