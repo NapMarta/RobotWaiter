@@ -1,7 +1,7 @@
 <launch>
-  <!-- 1) Avvia Gazebo con la mappa robot_bar -->
+  <!-- 1) Avvia Gazebo con la mappa bar_world.sdf -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find robot_bar)/world/robot_bar.world"/>
+    <arg name="world_name" value="$(find robot_bar)/world/bar_world.sdf"/>
   </include>
 
   <!-- 2) Carica il file URDF generato da Xacro -->

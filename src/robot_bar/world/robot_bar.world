@@ -1,12 +1,107 @@
 <?xml version="1.0" ?>
 <sdf version="1.6">
   <world name="robot_bar_world">
+
+    <!-- Terreno -->
     <include>
       <uri>model://ground_plane</uri>
     </include>
 
+    <!-- Sole -->
     <include>
       <uri>model://sun</uri>
     </include>
+
+    <!-- Tavolo semplice -->
+    <model name="simple_table">
+      <static>true</static>
+      <pose>1 1 0.375 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>1.0 0.5 0.75</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>1.0 0.5 0.75</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+
+    <!-- Sedia semplice -->
+    <model name="simple_chair">
+      <static>true</static>
+      <pose>0.5 1.1 0.25 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.4 0.4 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.6 0.6 0.6 1</ambient>
+            <diffuse>0.6 0.6 0.6 1</diffuse>
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.4 0.4 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+
+    <!-- Bancone semplice -->
+    <model name="simple_bar_counter">
+      <static>true</static>
+      <pose>-1 -2 0.5 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>2 0.5 1</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.4 0.2 0.2 1</ambient>
+            <diffuse>0.4 0.2 0.2 1</diffuse>
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>2 0.5 1</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+    </model>
+
+    <!-- Luci d’atmosfera molto semplici -->
+    <light name="table_light" type="point">
+      <pose>0 0 3 0 0 0</pose>
+      <diffuse>1 0.95 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>5</range>
+        <constant>0.5</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+    </light>
+
   </world>
 </sdf>

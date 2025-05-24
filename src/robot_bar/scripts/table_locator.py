@@ -7,11 +7,12 @@ import rospy
 import rosnode
 from robot_bar.srv import GetTablePosition, GetTablePositionResponse
 
-# Mappa fittizia dei tavoli
+# Mappa dei tavoli
 TAVOLI = {
-    1: (1.0, 2.0),
-    2: (2.5, 3.0),
-    3: (4.0, 1.5),
+    1: (-1.06, -2.70),
+    2: (0.86, -2.70),
+    3: (2.32, -1.37),
+    4: (2.32, 0.01)
 }
 
 def handle_get_position(req):
