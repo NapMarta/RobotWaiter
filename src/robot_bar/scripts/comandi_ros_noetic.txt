@@ -1,5 +1,6 @@
 # 1. Rendere eseguibile lo script Python
 chmod +x ~/Desktop/Progetto/ProgettoRP/src/robot_bar/scripts/order_manager.py
+chmod +x *.py
 # -> Assegna i permessi di esecuzione allo script per poterlo eseguire con rosrun
 
 # 2. Configurare il workspace ROS

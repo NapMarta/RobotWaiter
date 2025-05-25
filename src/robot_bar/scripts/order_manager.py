@@ -20,28 +20,26 @@ def invia_ordini(pub):
     while not rospy.is_shutdown():
         ordine = Order()
         ordine.id_ordine = f"ORD00{i}"
-        ordine.prodotto = "Espresso"
+        ordine.prodotto = "Beer"
         ordine.tavolo = random.choice([1, 2, 3, 4])
 
-        rospy.loginfo(f"Inviando ordine: \n{ordine}")
+        rospy.loginfo(f"Inviando ordine:\n{ordine}")
         pub.publish(ordine)
         i += 1
 
-        time.sleep(120)  # Aspetta 2 minuti prima di inviare un nuovo ordine
+        time.sleep(70)  # Aspetta 70 secondi prima di inviare un nuovo ordine
 
 def order_manager():
     rospy.init_node('order_manager', anonymous=True)
+    rospy.loginfo("Avvio del nodo order_manager")
 
     # Attendi che Gazebo sia pronto
-    while not rospy.is_shutdown():
-        try:
-            if '/gazebo' in rosnode.get_node_names():
-                break
-        except:
-            pass
-        rospy.sleep(1)
+    rospy.wait_for_service('/gazebo/set_model_state')
+    rospy.loginfo("Il servizio /gazebo/set_model_state è disponibile, proseguo...")
 
-    pub = rospy.Publisher("/ordine", Order, queue_size=10)
+    rospy.sleep(2)   # <-- aspetto che gli altri nodi si registrino
+
+    pub = rospy.Publisher("/ordine", Order, queue_size=10, latch=True)
     rospy.Subscriber("/consegna_completata", String, callback_consegna)
 
     # Avvia il thread per l'invio degli ordini

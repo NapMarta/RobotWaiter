@@ -28,7 +28,7 @@ def order_callback(msg):
     rospy.loginfo(f"La posizione del tavolo {msg.tavolo} è (x: {response.x}, y: {response.y})")
 
     # Pubblicare il comando di movimento
-    move_pub = rospy.Publisher('/movimento_robot', RobotMove, queue_size=10)
+    move_pub = rospy.Publisher('/movimento_robot', RobotMove, queue_size=10, latch=True)
     move_msg = RobotMove(tavolo=msg.tavolo, x=response.x, y=response.y)
     move_pub.publish(move_msg)
     rospy.loginfo(f"Inviato comando al robot per il tavolo {msg.tavolo}")
@@ -37,14 +37,10 @@ def order_callback(msg):
 
 def delivery_manager():
     rospy.init_node('delivery_manager', anonymous=True)
-    while not rospy.is_shutdown():
-        try:
-            nodes = rosnode.get_node_names()
-            if '/gazebo' in nodes:
-                break
-        except:
-            pass
-        rospy.sleep(1)
+    rospy.loginfo("Avvio del nodo delivery_manager")
+    rospy.wait_for_service('/gazebo/set_model_state')
+    rospy.loginfo("Il servizio /gazebo/set_model_state è disponibile, proseguo...")
+
 
     rospy.Subscriber("/ordine", Order, order_callback)
     rospy.loginfo("delivery_manager in ascolto su /ordine...")
