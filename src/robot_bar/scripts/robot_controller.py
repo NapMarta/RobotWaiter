@@ -82,7 +82,7 @@ def set_model_position(model_name, x, y, z=0.1, yaw=0.0):
         rospy.logerr(f"Errore set_model_state({model_name}): {e}")
 
 def move_robot_and_cargo(x_dest, y_dest, cargo_name=None,
-                         steps=60, delay=0.05, cargo_offset_z=0.5):
+                         steps=60, delay=0.03, cargo_offset_z=0.5):
     x0, y0 = get_current_position('robot_waiter')
     dx = (x_dest - x0) / steps
     dy = (y_dest - y0) / steps
@@ -132,29 +132,29 @@ def move_callback(msg):
     global spawned_beer
     rospy.loginfo("=== Consegna BEER in corso ===")
 
-    # 0) spawn Beer la prima volta
+    # spawn Beer la prima volta
     spawn_beer()
 
-    # 1) Vai al frigorifero
+    # Vai al frigorifero
     rospy.loginfo("Spostamento al frigo (-2, -1)…")
     move_robot_and_cargo(-2, -1)
 
-    # 2) Carica Beer
+    # Carica Beer
     rospy.loginfo("Carico BEER sul robot")
     x_b, y_b = get_current_position('robot_waiter')
     set_model_position(BEER_NAME, x_b, y_b, z=0.5)
 
-    # 3) Porta al tavolo
+    # Porta al tavolo
     rospy.loginfo(f"Spostamento al tavolo {msg.tavolo} ({msg.x}, {msg.y})…")
     move_robot_and_cargo(msg.x, msg.y, cargo_name=BEER_NAME, cargo_offset_z=0.5)
 
-    # 4) Rilascio Beer sul tavolo
+    # Rilascio Beer sul tavolo
     rospy.loginfo("Posiziono BEER sul tavolo")
     set_model_position(BEER_NAME, msg.x, msg.y, z=0.78)
 
     time.sleep(10)
 
-    # 5) conferma
+    # conferma ordine
     pub = rospy.Publisher('/consegna_completata', String, queue_size=10, latch=True)
     pub.publish(f"Ordine consegnato al tavolo {msg.tavolo}")
     rospy.loginfo(f"Ordine completato al tavolo {msg.tavolo}")

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
     Nodo che legge l'ordine e lo invia al delivery_manager
-    con un ordine ogni 2 minuti.
+    con un ordine ogni 70 secondi.
 """
 
 import rospy
