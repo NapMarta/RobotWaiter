@@ -46,10 +46,10 @@ def spawn_beer():
               robot_namespace='',
               initial_pose=initial_pose,
               reference_frame='world')
-        rospy.loginfo("Beer spawnata correttamente in (-2, -1).")
+        rospy.loginfo("[robot_controller] Beer spawnata correttamente in (-2, -1).")
         spawned_beer = True
     except rospy.ServiceException as e:
-        rospy.logerr(f"Errore spawn Beer: {e}")
+        rospy.logerr(f"[robot_controller] Errore spawn Beer: {e}")
 
 def get_current_position(model_name='robot_waiter'):
     rospy.wait_for_service('/gazebo/get_model_state')
@@ -60,7 +60,7 @@ def get_current_position(model_name='robot_waiter'):
             p = resp.pose.position
             return p.x, p.y
     except rospy.ServiceException as e:
-        rospy.logerr(f"Errore get_model_state({model_name}): {e}")
+        rospy.logerr(f"[robot_controller] Errore get_model_state({model_name}): {e}")
     return 0.0, 0.0
 
 def set_model_position(model_name, x, y, z=0.1, yaw=0.0):
@@ -79,7 +79,7 @@ def set_model_position(model_name, x, y, z=0.1, yaw=0.0):
         msg.pose.orientation.w = q[3]
         set_state(msg)
     except rospy.ServiceException as e:
-        rospy.logerr(f"Errore set_model_state({model_name}): {e}")
+        rospy.logerr(f"[robot_controller] Errore set_model_state({model_name}): {e}")
 
 def move_robot_and_cargo(x_dest, y_dest, cargo_name=None,
                          steps=60, delay=0.03, cargo_offset_z=0.5):
@@ -109,7 +109,7 @@ def move_robot_and_cargo(x_dest, y_dest, cargo_name=None,
         try:
             set_state(robot_msg)
         except rospy.ServiceException as e:
-            rospy.logerr(f"Errore spostamento robot: {e}")
+            rospy.logerr(f"[robot_controller] Errore spostamento robot: {e}")
             break
 
         # Muovo cargo se presente
@@ -123,29 +123,29 @@ def move_robot_and_cargo(x_dest, y_dest, cargo_name=None,
             try:
                 set_state(cargo_msg)
             except rospy.ServiceException as e:
-                rospy.logerr(f"Errore spostamento {cargo_name}: {e}")
+                rospy.logerr(f"[robot_controller] Errore spostamento {cargo_name}: {e}")
                 break
 
         time.sleep(delay)
 
 def move_callback(msg):
     global spawned_beer
-    rospy.loginfo("=== Consegna BEER in corso ===")
+    rospy.loginfo("[robot_controller] === Consegna BEER in corso ===")
 
     # spawn Beer la prima volta
     spawn_beer()
 
     # Vai al frigorifero
-    rospy.loginfo("Spostamento al frigo (-2, -1)…")
+    rospy.loginfo("[robot_controller] Spostamento al frigo (-2, -1)…")
     move_robot_and_cargo(-2, -1)
 
     # Carica Beer
-    rospy.loginfo("Carico BEER sul robot")
+    rospy.loginfo("[robot_controller] Carico BEER sul robot")
     x_b, y_b = get_current_position('robot_waiter')
     set_model_position(BEER_NAME, x_b, y_b, z=0.5)
 
     # Porta al tavolo
-    rospy.loginfo(f"Spostamento al tavolo {msg.tavolo} ({msg.x}, {msg.y})…")
+    rospy.loginfo(f"[robot_controller] Spostamento al tavolo {msg.tavolo} ({msg.x}, {msg.y})…")
     move_robot_and_cargo(msg.x, msg.y, cargo_name=BEER_NAME, cargo_offset_z=0.5)
 
     # Rilascio Beer sul tavolo
@@ -157,11 +157,11 @@ def move_callback(msg):
     # conferma ordine
     pub = rospy.Publisher('/consegna_completata', String, queue_size=10, latch=True)
     pub.publish(f"Ordine consegnato al tavolo {msg.tavolo}")
-    rospy.loginfo(f"Ordine completato al tavolo {msg.tavolo}")
+    rospy.loginfo(f"[robot_controller] Ordine completato al tavolo {msg.tavolo}")
 
 def robot_controller():
     rospy.init_node('robot_controller', anonymous=True)
-    rospy.loginfo("Avvio nodo robot_controller")
+    rospy.loginfo("[robot_controller] Avvio nodo robot_controller")
     rospy.wait_for_service('/gazebo/spawn_sdf_model')
     rospy.wait_for_service('/gazebo/get_model_state')
     rospy.wait_for_service('/gazebo/set_model_state')

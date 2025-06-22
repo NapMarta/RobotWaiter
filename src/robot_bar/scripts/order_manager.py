@@ -13,7 +13,7 @@ import threading
 import time
 
 def callback_consegna(msg):
-    rospy.loginfo(f"[CONFERMA] {msg.data}")
+    rospy.loginfo(f"[order_manager] - [CONFERMA] {msg.data}")
 
 def invia_ordini(pub):
     i = 1
@@ -23,7 +23,7 @@ def invia_ordini(pub):
         ordine.prodotto = "Beer"
         ordine.tavolo = random.choice([1, 2, 3, 4])
 
-        rospy.loginfo(f"Inviando ordine:\n{ordine}")
+        rospy.loginfo(f"[order_manager] Inviando ordine:\n{ordine}")
         pub.publish(ordine)
         i += 1
 
@@ -31,11 +31,11 @@ def invia_ordini(pub):
 
 def order_manager():
     rospy.init_node('order_manager', anonymous=True)
-    rospy.loginfo("Avvio del nodo order_manager")
+    rospy.loginfo("[order_manager] Avvio del nodo order_manager")
 
     # Attendi che Gazebo sia pronto
     rospy.wait_for_service('/gazebo/set_model_state')
-    rospy.loginfo("Il servizio /gazebo/set_model_state è disponibile, proseguo...")
+    rospy.loginfo("[order_manager] Il servizio /gazebo/set_model_state è disponibile, proseguo...")
 
     rospy.sleep(2)   # <-- aspetto che gli altri nodi si registrino
 
