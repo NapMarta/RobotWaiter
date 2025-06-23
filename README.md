@@ -1,4 +1,4 @@
-# ProgettoRP 🍺🤖
+# Robot Waiter 🍺🤖
 
 Robot cameriere per la consegna di birre in un bar, sviluppato con **ROS Noetic**, **Gazebo** e **RViz**.  
 Il progetto simula un ambiente in cui un robot riceve un ordine, determina la posizione del tavolo e vi si dirige per consegnare la birra.
