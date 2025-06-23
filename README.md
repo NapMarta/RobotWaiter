@@ -58,7 +58,7 @@ Il progetto simula un ambiente in cui un robot riceve un ordine, determina la po
    source devel/setup.bash
 
 3. Esegui il progstto:
-  
-  ```bash
-  roslaunch robot_bar robot_bar_system.launch
+    
+    ```bash
+    roslaunch robot_bar robot_bar_system.launch
 
