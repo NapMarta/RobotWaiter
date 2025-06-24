@@ -1,23 +1,31 @@
 #!/usr/bin/env python3
 """
     Nodo che legge l'ordine e lo invia al delivery_manager
-    con un ordine ogni 70 secondi.
+    uno alla volta, solo dopo che il precedente è stato consegnato.
 """
 
 import rospy
-import rosnode
 from robot_bar.msg import Order
 from std_msgs.msg import String
 import random
 import threading
 import time
 
+ordine_consegnato_event = threading.Event()
+
 def callback_consegna(msg):
     rospy.loginfo(f"[order_manager] - [CONFERMA] {msg.data}")
+    ordine_consegnato_event.set()
 
 def invia_ordini(pub):
     i = 1
     while not rospy.is_shutdown():
+        ordine_consegnato_event.wait()
+
+        # Attendi 10 secondi prima di inviare il prossimo ordine
+        rospy.loginfo("[order_manager] Attendo 10 secondi prima di inviare il prossimo ordine...")
+        time.sleep(10)
+
         ordine = Order()
         ordine.id_ordine = f"ORD00{i}"
         ordine.prodotto = "Beer"
@@ -27,22 +35,22 @@ def invia_ordini(pub):
         pub.publish(ordine)
         i += 1
 
-        time.sleep(70)  # Aspetta 70 secondi prima di inviare un nuovo ordine
+        ordine_consegnato_event.clear()
 
 def order_manager():
     rospy.init_node('order_manager', anonymous=True)
     rospy.loginfo("[order_manager] Avvio del nodo order_manager")
 
-    # Attendi che Gazebo sia pronto
     rospy.wait_for_service('/gazebo/set_model_state')
     rospy.loginfo("[order_manager] Il servizio /gazebo/set_model_state è disponibile, proseguo...")
 
-    rospy.sleep(2)   # <-- aspetto che gli altri nodi si registrino
+    rospy.sleep(2)
 
     pub = rospy.Publisher("/ordine", Order, queue_size=10, latch=True)
     rospy.Subscriber("/consegna_completata", String, callback_consegna)
 
-    # Avvia il thread per l'invio degli ordini
+    ordine_consegnato_event.set()  # Per permettere l'invio del primo ordine
+
     threading.Thread(target=invia_ordini, args=(pub,), daemon=True).start()
 
     rospy.spin()
