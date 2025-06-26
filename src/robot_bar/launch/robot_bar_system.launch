@@ -13,7 +13,7 @@
         type="robot_state_publisher"
         output="screen" />
 
-  <!-- 4) Spawn delayed -->
+  <!-- 4) Spawn robot in Gazebo Word -->
   <node name="spawn_robot"
       pkg="gazebo_ros"
       type="spawn_model"
