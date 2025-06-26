@@ -57,8 +57,27 @@ Il progetto simula un ambiente in cui un robot riceve un ordine, determina la po
    catkin_make
    source devel/setup.bash
 
-3. Esegui il progstto:
+3. Esegui il progetto:
     
     ```bash
     roslaunch robot_bar robot_bar_system.launch
+
+
+### ⚙️ Esecuzioni modulari
+
+È possibile avviare separatamente le varie componenti del sistema tramite i rispettivi file  `.launch`:
+
+| Launch file                 | Descrizione                                                                 |
+|----------------------------|------------------------------------------------------------------------------|
+| `robot_bar_model.launch`   | Avvia solo la logica dei nodi ROS, senza visualizzazione.                   |
+| `robot_bar_view.launch`    | Visualizza il robot in **Rviz** tramite modello **XACRO**.                  |
+| `robot_bar_gazebo.launch`  | Avvia la simulazione in **Gazebo** utilizzando il modello **URDF**.         |
+| `robot_bar_system.launch`  | Avvia l'intero sistema, con l'integrazione di tutte le componenti.          |
+
+Il file URDF è generato a partire da XACRO con il comando:
+
+  ```bash
+  xacro robot_waiter.xacro -o robot_waiter.urdf
+
+ 
 
