@@ -78,6 +78,3 @@ Il file URDF è generato a partire da XACRO con il comando:
 
   ```bash
   xacro robot_waiter.xacro -o robot_waiter.urdf
-
- 
-
